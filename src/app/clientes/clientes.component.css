@@ -1,0 +1,9 @@
+/* Alturas fotos clientes */
+.fotos_clientes{
+    height: 280px;
+}
+
+/* Efecto fotos clientes */
+.fotos_clientes:hover{
+    box-shadow: 0 0 0.7rem rgb(149, 75, 187);
+}

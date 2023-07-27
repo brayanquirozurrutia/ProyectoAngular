@@ -1,0 +1,127 @@
+/* You can add global styles to this file, and also import other style files */
+
+*{
+    box-sizing: border-box;
+}
+
+/* Logo jelly */
+img{
+    width: 10%;
+}
+
+.body{
+    margin: 0;
+}
+
+/* Link del título (h1) */
+.link_titulo{
+    text-decoration: none;
+    color: black;
+}
+
+/* Colores íconos cuenta */
+.fa-solid{
+    color: black;
+}
+
+/* Altura fotos carousel */
+.imagen_carousel{
+    height: 600px;
+}
+
+/* Altura fotos card */
+.card-img-top{
+    height: 500px;
+}
+
+/* Ancho input cantidad */
+.input_cantidad{
+    width: 60px;
+}
+
+/* Tamaño logo footer */
+.logo_jelly_footer{
+    width: 30%;
+}
+
+/* Links del footer */
+.link_footer{
+    color: black;
+}
+
+/* Efecto al footer */
+.footer{
+    box-shadow: 0 0 0.5rem;
+}
+
+/* Video responsivo */
+.video-wrapper{
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+  
+.video-wrapper iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Colores íconos RRSS */
+.fa-brands.fa-facebook{
+    color: #2555a7;
+}
+
+.fa-brands.fa-twitter{
+    color: #2675fd;
+}
+
+.fa-brands.fa-linkedin{
+    color: #224a91;
+}
+
+.fa-brands.fa-youtube{
+    color: #f03124;
+}
+
+/* Colores íconos cuenta */
+.fa-solid:hover{
+    color: rgb(149, 75, 187);
+}
+
+/* Link del título (h1) hover*/
+.link_titulo:hover{
+    color: rgb(149, 75, 187);
+}
+
+/* Íconos RSS hover */
+.fa-brands:hover{
+    color: rgb(149, 75, 187);
+}
+
+/* Hover menú navegación */
+.menu_nav:hover{
+    text-decoration: underline;
+}
+
+/* Efecto cards del main */
+.card:hover{
+    box-shadow: 0 0 0.7rem;
+}
+
+/* Colores íconos RRSS footer */
+.fab:hover{
+    color: rgb(149, 75, 187);
+}
+
+/* Links del footer */
+.link_footer:hover{
+    color: rgb(149, 75, 187);
+    font-size: large;
+}
+
+
+

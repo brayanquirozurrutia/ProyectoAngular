@@ -1,0 +1,44 @@
+<!-- Componente CarritoCompra -->
+<div class="container-fluid pt-4 pb-4">
+    <div class="container-fluid">
+        <div class="container-fluid pe-4 ps-4">
+            <table class="table table-striped" *ngIf="hayCompra(); else SinArticulos">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Total</th>
+                        <th>Eliminar</th>
+                        <th>Seleccionar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let articulo of sharedService.articulos_comprados.slice(1)">
+                        <td>{{articulo.codigo}}</td>
+                        <td>{{articulo.nombre}}</td>
+                        <td>{{articulo.cantidad}}</td>
+                        <td>${{articulo.precio}}</td>
+                        <td>${{articulo.total}}</td>
+                        <td><button class="btn btn-primary" (click)="borrar(articulo.codigo)">Eliminar</button></td>
+                        <td><button class="btn btn-primary" (click)="seleccionar(articulo)">Seleccionar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <ng-template #SinArticulos><p class="text-center fw-bold">No ha seleccionado artículos</p></ng-template>
+            <div class="container-fluid bg-body pt-2 pb-2 rounded" *ngIf="sharedService.articulos_comprados.length > 1">
+                <label for="" class="pe-3 fw-bold">Código</label>
+                <input type="number" class="me-3 input rounded" [(ngModel)]="sharedService.articulo.codigo" readonly>
+                <label for="" class="pe-3 fw-bold">Cantidad</label>
+                <input type="number" class="me-3 input rounded" [(ngModel)]="sharedService.articulo.cantidad">
+                <label for="" class="pe-3 fw-bold">Precio</label>
+                <input type="number" class="input rounded" [(ngModel)]="sharedService.articulo.precio" readonly>
+                <label for="" class="pe-3 fw-bold">Total</label>
+                <input type="number" class="input rounded" [(ngModel)]="sharedService.articulo.precio * sharedService.articulo.cantidad" readonly>
+                <button class="btn btn-primary ms-3" (click)="agregar()">Añadir</button>
+                <button class="btn btn-primary ms-3" (click)="quitar()">Quitar</button>
+            </div>
+        </div>  
+    </div>
+</div>

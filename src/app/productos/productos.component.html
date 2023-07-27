@@ -1,0 +1,42 @@
+<!-- Componente ListadoProductos -->
+<div class="container-fluid pt-4 pb-4">
+    <div class="container-fluid">
+        <div class="container-fluid pe-4 ps-4">
+            <table class="table table-striped" *ngIf="hayProductos(); else SinProductos">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Eliminar</th>
+                        <th>Seleccionar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of sharedService.productos">
+                        <td>{{producto.codigo}}</td>
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.cantidad}}</td>
+                        <td>${{producto.precio}}</td>
+                        <td><button (click)="borrar(producto.codigo)" class="btn btn-primary">Eliminar</button></td>
+                        <td><button (click)="seleccionar(producto)" class="btn btn-primary">Seleccionar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <ng-template #SinProductos><p class="text-center fw-bold">No hay productos disponibles</p></ng-template>
+            <div class="container-fluid bg-body pt-2 pb-2 rounded">
+                <label for="" class="pe-3 fw-bold">Código</label>
+                <input type="number" class="me-3 input rounded" [(ngModel)]="sharedService.producto.codigo">
+                <label for="" class="pe-3 fw-bold">Nombre</label>
+                <input type="text" class="me-3 input input_nombre rounded" [(ngModel)]="sharedService.producto.nombre">
+                <label for="" class="pe-3 fw-bold">Cantidad</label>
+                <input type="number" class="me-3 input rounded" [(ngModel)]="sharedService.producto.cantidad">
+                <label for="" class="pe-3 fw-bold">Precio</label>
+                <input type="number" class="input rounded" [(ngModel)]="sharedService.producto.precio">
+                <button class="btn btn-primary ms-3" (click)="agregar()">Agregar</button>
+                <button class="btn btn-primary ms-3" (click)="modificar()">Modificar</button>
+            </div>
+        </div>  
+    </div>
+</div>

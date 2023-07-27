@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jelly Tienda</title>
+</head>
+
+<body class="body bg-success-subtle">
+  <header>
+    <div class="container-fluid bg-warning-subtle">
+      <!-- Logo -->
+      <div class="row">
+        <div class="col-12 mt-4">
+          <a routerLink="/">
+            <img src="../assets/images/jelly_logo.png" class="img-fluid rounded mx-auto d-block" alt="Logo Jelly">
+          </a>
+        </div>
+      </div>
+      <!-- Título -->
+      <div class="row mt-4">
+        <div class="col-12 text-center">
+          <a class="link_titulo" href="index.html">
+            <h1>Jelly tienda</h1>
+          </a>
+        </div>
+      </div>
+      <!-- Inicio nav -->
+      <div class="row">
+        <div class="col-12 p-0">
+          <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- RRSS -->
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1 col-xxl-1 mt-3 mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0 mt-xxl-0 mb-3 mb-sm-3 mb-md-3 mb-lg-0 mb-xl-0 mb-xxl-0">
+                  <a href="#" target="_blank"><i class="fa-brands fa-facebook me-1"></i></a>
+                  <a href="#" target="_blank"><i class="fa-brands fa-twitter me-1"></i></a>
+                  <a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <!-- Menú navegación -->
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-8 col-xd-8 col-xxl-8 mb-3 mb-sm-3 mb-md-3 mb-lg-0 mb-xl-0 mb-xxl-0">
+                  <ul class="navbar-nav me-auto mb-3 mb-lg-0 justify-content-center">
+                    <li class="nav-item">
+                      <a class="nav-link active menu_nav" aria-current="page" routerLink="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active menu_nav" aria-current="page" routerLink="/ClientesFelices">Clientes</a>
+                    </li>
+                    <li class="nav-item dropdown menu_nav">
+                      <a class="nav-link dropdown-toggle text-black" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" (click)="toggleDropdown(0)">
+                        Categorías
+                      </a>
+                      <ul class="dropdown-menu" [class.show]="isOpen[0]">
+                        <li><a class="dropdown-item menu_nav">PC</a></li>
+                        <li><a class="dropdown-item menu_nav">Álbum</a></li>
+                        <li><a class="dropdown-item menu_nav">BT21</a></li>
+                        <li><a class="dropdown-item menu_nav">Membresía BTS</a></li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item menu_nav">Todo BTS</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item dropdown menu_nav">
+                      <a class="nav-link dropdown-toggle text-black" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" (click)="toggleDropdown(1)">
+                        Despachos
+                      </a>
+                      <ul class="dropdown-menu" [class.show]="isOpen[1]">
+                        <li><a class="dropdown-item menu_nav">Región Metropolitana </a></li>
+                        <li><a class="dropdown-item menu_nav">Otras Regiones</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active menu_nav" aria-current="page" routerLink="/ListadoProductos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active menu_nav" aria-current="page" routerLink="/ContactoTienda">Suscríbete</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active menu_nav" aria-current="page" routerLink="/MapaTienda">Visítanos</a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Cuenta -->
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1 col-xxl-1 mb-3 mb-sm-3 mb-md-3 mb-lg-0 mb-xl-0 mb-xxl-0">
+                  <a routerLink="/Servicio"><i class="fa-solid fa-circle-user me-1"></i></a>
+                  <a><i class="fa-solid fa-heart me-1"></i></a>
+                  <a routerLink="/CarritoCompra"><i class="fa-solid fa-cart-shopping">
+                      <span class="badge text-bg-secondary bg-transparent">
+                        <p class="text-black mb-1">
+                          {{sharedService.cantidad_carrito}}
+                        </p>
+                      </span></i></a>
+                </div>
+                <!-- Búsqueda -->
+                <div
+                  class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 mb-3 mb-sm-3 mb-md-3 mb-lg-0 mb-xl-0 mb-xxl-0">
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Vamos" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <!-- Inicio Sección carousel -->
+    <section>
+      <div class="row m-0">
+        <div class="col-12">
+          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <!-- Imagen 1 -->
+              <div class="carousel-item active">
+                <img src="../assets/images/jungkook_seven.webp" class="w-75 rounded mx-auto d-block imagen_carousel" alt="jungkook_seven">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Jungkook Seven</h5>
+                  <p>Ya disponible la nueva canción de Jungkook</p>
+                </div>
+              </div>
+              <!-- Imagen 2 -->
+              <div class="carousel-item">
+                <img src="../assets/images/how_do_you_live.webp" class="w-75 rounded mx-auto d-block imagen_carousel" alt="how_do_you_live">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Kimitachi wa Dō Ikiru ka</h5>
+                  <p>Nueva película de Studio Ghibli</p>
+                </div>
+              </div>
+              <!-- Imagen 3 -->
+              <div class="carousel-item">
+                <img src="../assets/images/mapa.webp" class="d-block w-75 imagen_carousel rounded mx-auto d-block"
+                  alt="ubicacion_jelly">
+                  <div class="carousel-caption d-none d-md-block text-black">
+                    <h5>Ven a visitarnos</h5>
+                    <p>Estamos ubicados en Av. Apoquindo 7282 Las Condes</p>
+                  </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Fin Sección carousel -->
+    <!-- Inició sección card -->
+    <section>
+      <!-- Creamos un contenedor para dar margen -->
+      <div class="container-fluid">
+        <!-- Subtítulo -->
+        <div class="row">
+          <div class="col-12 text-center mt-5 mb-5">
+            <h2>Recién llegados</h2>
+          </div>
+        </div>
+        <!-- Cards -->
+        <!-- Inicio fila 1 -->
+        <div class="row">
+          <!-- Inicio CARD 1 -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col xxl-4 mb-3 ps-md-5 ps-lg-5 ps-xl-5 ps-xxl-5">
+            <div class="card">
+              <img src="../assets/images/bts_album_be_2.webp" class="card-img-top w-100" alt="Album be BTS">
+              <div class="card-body text-center">
+                <h5 class="card-title">BTS BE</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut aliquid odit
+                  dignissimos, perferendis, distinctio modi sint quia molestias facere corporis soluta? Modi iste illo
+                  consequatur amet maxime earum mollitia?</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">Ver
+                  Más</button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <!-- Header -->
+                      <div class="modal-header bg-warning-subtle">
+                        <div class="col-1">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <span>&#62;</span>
+                          </button>
+                        </div>
+                        <div class="col-10">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel1">BE 2020</h1>
+                        </div>
+                        <div class="col-1">
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                      </div>
+                      <!-- Main -->
+                      <div class="modal-body bg-success-subtle">
+                        <img class="img-fluid w-100" src="../assets/images/bts_album_be_2.webp" alt="Album be bts V2">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta qui veritatis labore
+                          reprehenderit ullam, temporibus, quod laboriosam maxime quisquam consequuntur nemo amet
+                          perspiciatis explicabo reiciendis laudantium molestias dolore eos officiis?
+                        </p>
+                        <div>
+                          <p class="fs-2">
+                            ${{sharedService.productos[0].precio}}
+                          </p>
+                        </div>
+                      </div>
+                      <!-- Footer -->
+                      <div class="modal-footer justify-content-center bg-secondary-subtle">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                        <div class="dropdown">
+                          <label for="cantidad" class="">Cantidad</label>
+                          <input type="number" class="input_cantidad" (click)="total(0)" [(ngModel)]="cantidad">
+                          <label id="total_1">Total: $</label>
+                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" (click)="toggleDropdown(2)">
+                            Comprar
+                          </button>
+                          <ul class="dropdown-menu" [class.show]="isOpen[2]">
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()" id="1-1">Retiro en tienda</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()" id="1-2">Despacho RM</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()" id="1-3">Despacho Regiones</a></li>
+                          </ul>
+                          <!-- Toast -->
+                          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+                              [class.show]="showToast">
+                              <div class="toast-header">
+                                <img src="../assets/images/jelly_logo.png" class="rounded me-2" alt="Logo_jelly">
+                                <strong class="me-auto">Jelly</strong>
+                                <small>11 mins ago</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"
+                                  (click)="hideToaster()"></button>
+                              </div>
+                              <div class="toast-body">
+                                Se ha añadido el artículo {{nombre_producto}} por una suma de ${{total_compra}}. Recuerda que el costo de envío para este ártículo es de ${{costo_envio}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin CARD 1 -->
+          <!-- Inicio CARD 2 -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col xxl-4 mb-3 ps-md-4 ps-lg-4 ps-xl-4 ps-xxl-4 pe-md-5 pe-lg-5 pe-xl-5 pe-xxl-5">
+            <div class="card">
+              <img src="../assets/images/pc_bts_1.webp" class="card-img-top w-100" alt="BTS aesthetic">
+              <div class="card-body text-center">
+                <h5 class="card-title">Nuevas PC de BTS</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut aliquid odit
+                  dignissimos, perferendis, distinctio modi sint quia molestias facere corporis soluta? Modi iste illo
+                  consequatur amet maxime earum mollitia?</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">Ver
+                  más</button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <!-- Header -->
+                      <div class="modal-header bg-warning-subtle">
+                        <div class="col-1">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <span>&#62;</span>
+                          </button>
+                        </div>
+                        <div class="col-10">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel2">Photo Cards
+                          </h1>
+                        </div>
+                        <div class="col-1">
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                      </div>
+                      <!-- Main -->
+                      <div class="modal-body bg-success-subtle">
+                        <img class="img-fluid w-100" src="../assets/images/pc_bts_2.webp" alt="Photo Cards BTS">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta qui veritatis labore
+                          reprehenderit ullam, temporibus, quod laboriosam maxime quisquam consequuntur nemo amet
+                          perspiciatis explicabo reiciendis laudantium molestias dolore eos officiis?
+                        </p>
+                        <div>
+                          <p class="fs-2">
+                            ${{sharedService.productos[1].precio}}
+                          </p>
+                        </div>
+                      </div>
+                      <!-- Footer -->
+                      <div class="modal-footer justify-content-center bg-secondary-subtle">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                        <div class="dropdown">
+                          <label for="cantidad" class="">Cantidad</label>
+                          <input type="number" class="input_cantidad" (click)="total(1)" [(ngModel)]="cantidad">
+                          <label id="total_2">Total: $</label>
+                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" (click)="toggleDropdown(3)">
+                            Comprar
+                          </button>
+                          <ul class="dropdown-menu" [class.show]="isOpen[3]">
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()" id="2-1">Retiro
+                                en tienda</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()" id="2-2">Despacho RM</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()" id="2-3">Despacho Regiones</a></li>
+                          </ul>
+                          <!-- Toast -->
+                          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+                              [class.show]="showToast">
+                              <div class="toast-header">
+                                <img src="../assets/images/jelly_logo.png" class="rounded me-2" alt="Logo_jelly">
+                                <strong class="me-auto">Jelly</strong>
+                                <small>11 mins ago</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"
+                                  (click)="hideToaster()"></button>
+                              </div>
+                              <div class="toast-body">
+                                Se ha añadido el artículo {{nombre_producto}} por una suma de ${{total_compra}}. Recuerda que el costo de envío para este ártículo es de ${{costo_envio}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin CARD 2 -->
+          <!-- Inicio CARD 3 -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col xxl-4 mb-3 pe-md-5 pe-lg-5 pe-xl-5 pe-xxl-5">
+            <div class="card">
+              <img src="../assets/images/newjeans_ep_newjeans.webp" class="card-img-top w-100" alt="EP NewJeans NWJNS">
+              <div class="card-body text-center">
+                <h5 class="card-title">NewJEans EP</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut aliquid odit
+                  dignissimos, perferendis, distinctio modi sint quia molestias facere corporis soluta? Modi iste illo
+                  consequatur amet maxime earum mollitia?</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">Ver
+                  Más</button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <!-- Header -->
+                      <div class="modal-header bg-warning-subtle">
+                        <div class="col-1">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <span>&#62;</span>
+                          </button>
+                        </div>
+                        <div class="col-10">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel3">NewJEans EP NWJNS </h1>
+                        </div>
+                        <div class="col-1">
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                      </div>
+                      <!-- Main -->
+                      <div class="modal-body bg-success-subtle">
+                        <img class="img-fluid w-100" src="../assets/images/newjeans_ep_newjeans_2.webp"
+                          alt="EP NewJeans V2">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta qui veritatis labore
+                          reprehenderit ullam, temporibus, quod laboriosam maxime quisquam consequuntur nemo amet
+                          perspiciatis explicabo reiciendis laudantium molestias dolore eos officiis?
+                        </p>
+                        <div>
+                          <p class="fs-2">
+                            ${{sharedService.productos[2].precio}}
+                          </p>
+                        </div>
+                      </div>
+                      <!-- Footer -->
+                      <div class="modal-footer justify-content-center bg-secondary-subtle">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                        <div class="dropdown">
+                          <label for="cantidad" class="">Cantidad</label>
+                          <input type="number" class="input_cantidad" (click)="total(2)" [(ngModel)]="cantidad">
+                          <label id="total_3">Total: $</label>
+                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" (click)="toggleDropdown(4)">
+                            Comprar
+                          </button>
+                          <ul class="dropdown-menu" [class.show]="isOpen[4]">
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="3-1">Retiro en tienda</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="3-2">Despacho RM</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="3-3">Despacho Regiones</a></li>
+                          </ul>
+                          <!-- Toast -->
+                          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+                              [class.show]="showToast">
+                              <div class="toast-header">
+                                <img src="../assets/images/jelly_logo.png" class="rounded me-2" alt="Logo_jelly">
+                                <strong class="me-auto">Jelly</strong>
+                                <small>11 mins ago</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"
+                                  (click)="hideToaster()"></button>
+                              </div>
+                              <div class="toast-body">
+                                Se ha añadido el artículo {{nombre_producto}} por una suma de ${{total_compra}}. Recuerda que el costo de envío para este ártículo es de ${{costo_envio}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin CARD 3 -->
+        </div>
+        <!-- Fin fila 1 -->
+        <!-- Inicio fila 2 -->
+        <div class="row">
+          <!-- Inicio CARD 4 -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col xxl-4 mb-3 ps-md-5 ps-lg-5 ps-xl-5 ps-xxl-5">
+            <div class="card">
+              <img src="assets/images/pc_newjeans_1.webp" class="card-img-top w-100" alt="Photo Cards NewJEans">
+              <div class="card-body text-center">
+                <h5 class="card-title">Nuevas PC de NWJNS</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut aliquid odit
+                  dignissimos, perferendis, distinctio modi sint quia molestias facere corporis soluta? Modi iste illo
+                  consequatur amet maxime earum mollitia?
+                </p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4">Ver
+                  Más</button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <!-- Header -->
+                      <div class="modal-header bg-warning-subtle">
+                        <div class="col-1">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <span>&#62;</span>
+                          </button>
+                        </div>
+                        <div class="col-10">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel4">Photo Cards NewJEans</h1>
+                        </div>
+                        <div class="col-1">
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                      </div>
+                      <!-- Main -->
+                      <div class="modal-body bg-success-subtle">
+                        <img class="img-fluid w-100" src="../assets/images/pc_newjeans_2.webp"
+                          alt="Photo Cards NewJEans V2">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta qui veritatis labore
+                          reprehenderit ullam, temporibus, quod laboriosam maxime quisquam consequuntur nemo amet
+                          perspiciatis explicabo reiciendis laudantium molestias dolore eos officiis?
+                        </p>
+                        <div>
+                          <p class="fs-2">
+                            ${{sharedService.productos[3].precio}}
+                          </p>
+                        </div>
+                      </div>
+                      <!-- Footer -->
+                      <div class="modal-footer justify-content-center bg-secondary-subtle">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                        <div class="dropdown">
+                          <label for="cantidad" class="">Cantidad</label>
+                          <input type="number" class="input_cantidad" (click)="total(3)" [(ngModel)]="cantidad">
+                          <label id="total_4">Total: $</label>
+                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" (click)="toggleDropdown(5)">
+                            Comprar
+                          </button>
+                          <ul class="dropdown-menu" [class.show]="isOpen[5]">
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="4-1">Retiro en tienda</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="4-2">Despacho RM</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="4-3">Despacho Regiones</a></li>
+                          </ul>
+                          <!-- Toast -->
+                          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+                              [class.show]="showToast">
+                              <div class="toast-header">
+                                <img src="../assets/images/jelly_logo.png" class="rounded me-2" alt="Logo_jelly">
+                                <strong class="me-auto">Jelly</strong>
+                                <small>11 mins ago</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"
+                                  (click)="hideToaster()"></button>
+                              </div>
+                              <div class="toast-body">
+                                Se ha añadido el artículo {{nombre_producto}} por una suma de ${{total_compra}}. Recuerda que el costo de envío para este ártículo es de ${{costo_envio}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin CARD 4 -->
+          <!-- Inicio CARD 5 -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col xxl-4 mb-3 ps-md-4 ps-lg-4 ps-xl-4 ps-xxl-4 pe-md-4 pe-lg-4 pe-xl-4 pe-xxl-4">
+            <div class="card">
+              <img src="../assets/images/bts_album_love_yourslf_answer.webp" class="card-img-top w-100"
+                alt="Album BTS Love Yourself Answer">
+              <div class="card-body text-center">
+                <h5 class="card-title">BTS Love Yourself Answer</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut aliquid odit
+                  dignissimos, perferendis, distinctio modi sint quia molestias facere corporis soluta? Modi iste illo
+                  consequatur amet maxime earum mollitia?</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal5">Ver
+                  Más</button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel5"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <!-- Header -->
+                      <div class="modal-header bg-warning-subtle">
+                        <div class="col-1">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <span>&#62;</span>
+                          </button>
+                        </div>
+                        <div class="col-10">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel5">Love Yourself Answer</h1>
+                        </div>
+                        <div class="col-1">
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                      </div>
+                      <!-- Main -->
+                      <div class="modal-body bg-success-subtle">
+                        <img class="img-fluid w-100" src="../assets/images/bts_album_love_yourslf_answer_2.webp"
+                          alt="Album BTS Love Yourself Answe V2">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta qui veritatis labore
+                          reprehenderit ullam, temporibus, quod laboriosam maxime quisquam consequuntur nemo amet
+                          perspiciatis explicabo reiciendis laudantium molestias dolore eos officiis?
+                        </p>
+                        <div>
+                          <p class="fs-2">
+                            ${{sharedService.productos[4].precio}}
+                          </p>
+                        </div>
+                      </div>
+                      <!-- Footer -->
+                      <div class="modal-footer justify-content-center bg-secondary-subtle">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                        <div class="dropdown">
+                          <label for="cantidad" class="">Cantidad</label>
+                          <input type="number" class="input_cantidad" (click)="total(4)" [(ngModel)]="cantidad">
+                          <label id="total_5">Total: $</label>
+                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" (click)="toggleDropdown(6)">
+                            Comprar
+                          </button>
+                          <ul class="dropdown-menu" [class.show]="isOpen[6]">
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="5-1">Retiro en tienda</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="5-2">Despacho RM</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="5-3">Despacho Regiones</a></li>
+                          </ul>
+                          <!-- Toast -->
+                          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+                              [class.show]="showToast">
+                              <div class="toast-header">
+                                <img src="../assets/images/jelly_logo.png" class="rounded me-2" alt="Logo_jelly">
+                                <strong class="me-auto">Jelly</strong>
+                                <small>11 mins ago</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"
+                                  (click)="hideToaster()"></button>
+                              </div>
+                              <div class="toast-body">
+                                Se ha añadido el artículo {{nombre_producto}} por una suma de ${{total_compra}}. Recuerda que el costo de envío para este ártículo es de ${{costo_envio}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin CARD 5 -->
+          <!-- Inicio CARD 6 -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col xxl-4 mb-3 pe-md-5 pe-lg-5 pe-xl-5 pe-xxl-5">
+            <div class="card">
+              <img src="../assets/images/totoro.webp" class="card-img-top w-100" alt="Foto Totoro">
+              <div class="card-body text-center">
+                <h5 class="card-title">Llegada de Merchandising</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut aliquid odit
+                  dignissimos, perferendis, distinctio modi sint quia molestias facere corporis soluta? Modi iste illo
+                  consequatur amet maxime earum mollitia?
+                </p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal6">Ver
+                  Más</button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel6"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <!-- Header -->
+                      <div class="modal-header bg-warning-subtle">
+                        <div class="col-1">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <span>&#62;</span>
+                          </button>
+                        </div>
+                        <div class="col-10">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel6">Todo Gibli</h1>
+                        </div>
+                        <div class="col-1">
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                      </div>
+                      <!-- Main -->
+                      <div class="modal-body bg-success-subtle">
+                        <img class="img-fluid w-100" src="../assets/images/gibli.webp" alt="Foto Gibli">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta qui veritatis labore
+                          reprehenderit ullam, temporibus, quod laboriosam maxime quisquam consequuntur nemo amet
+                          perspiciatis explicabo reiciendis laudantium molestias dolore eos officiis?
+                        </p>
+                        <div>
+                          <p class="fs-2">
+                            ${{sharedService.productos[5].precio}}
+                          </p>
+                        </div>
+                      </div>
+                      <!-- Footer -->
+                      <div class="modal-footer justify-content-center bg-secondary-subtle">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                        <div class="dropdown">
+                          <label for="cantidad" class="">Cantidad</label>
+                          <input type="number" class="input_cantidad" (click)="total(5)" [(ngModel)]="cantidad">
+                          <label id="total_6">Total: $</label>
+                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" (click)="toggleDropdown(7)">
+                            Comprar
+                          </button>
+                          <ul class="dropdown-menu" [class.show]="isOpen[7]">
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="6-1">Retiro en tienda</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="6-2">Despacho RM</a></li>
+                            <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()"
+                                id="6-3">Despacho Regiones</a></li>
+                          </ul>
+                          <!-- Toast -->
+                          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+                              [class.show]="showToast">
+                              <div class="toast-header">
+                                <img src="../assets/images/jelly_logo.png" class="rounded me-2" alt="Logo_jelly">
+                                <strong class="me-auto">Jelly</strong>
+                                <small>11 mins ago</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"
+                                  (click)="hideToaster()"></button>
+                              </div>
+                              <div class="toast-body">
+                                Se ha añadido el artículo {{nombre_producto}} por una suma de ${{total_compra}}. Recuerda que el costo de envío para este ártículo es de ${{costo_envio}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin CARD 6 -->
+        </div>
+        <!-- Fin fila 2 -->
+      </div>
+    </section>
+    <!-- Fin sección card -->
+    <!-- Llamamos a los componentes -->
+    <router-outlet></router-outlet>
+    <!-- Inicio sección video -->
+    <section>
+      <div class="container-fluid ps-5 pe-5">
+        <!-- Título -->
+        <div class="row">
+          <div class="col-12 text-center mb-3 ">
+            <h2>Te traemos un clásico de vuelta</h2>
+          </div>
+        </div>
+        <!-- Video -->
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-9 col xxl-9 mb-3">
+            <div class="video-wrapper">
+              <iframe width="885" height="498" src="https://www.youtube.com/embed/XsX3ATc3FbA"
+                title="BTS (방탄소년단) &#39;작은 것들을 위한 시 (Boy With Luv) (feat. Halsey)&#39; Official MV" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+          <!-- Letra canción -->
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 col xxl-3 mb-3 text-center">
+            <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+              aria-controls="offcanvasExample">
+              Ver letra
+            </a>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
+              aria-labelledby="offcanvasExampleLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Boy with luv</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <div>
+                  <div>
+                    <p>
+                      Cuéntame todo, ¿cómo ha sido tu día?
+                      Oh, dímelo (oh sí, oh sí, oh sí, oh sí)
+                      Qué es lo que te hace feliz
+                      Oh, envíame un mensaje (oh sí, oh sí, oh sí, oh sí)
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Todas tus fotos
+                      Quiero dejar cerca de mi almohada, oh, nena
+                      Ven a ser mi profesora
+                      Enséñame todo acerca de ti
+                      Las cosas más básicas
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Escucha, amor, estoy
+                      Volando alto en el cielo
+                      (Con las dos alas que me diste)
+                      Ahora está tan alto aquí
+                      Te quiero sintonizado con mis ojos
+                      Sí, me estás convirtiendo en un chico enamorado
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Oh, cielos, oh, cielos
+                      Me dejaste encantado tan rápido
+                      Quiero estar contigo todo el tiempo
+                      Oh, cielos, oh, cielos
+                      Buscando algo bien
+                      Ahora logro entenderlo
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      El amor no es nada más fuerte
+                      Que un momento, que un momento, amor
+                      He esperado mucho
+                      Por un chico, un chico enamorado
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Desde que te conocí, sí, te volviste mi vida, sí
+                      Eres la estrella que convierte
+                      Cosas normales en extraordinarias
+                      Una tras otra, todos las cosas son especiales
+                      Las cosas que a ti te gustan, la manera con que hablas o caminas
+                      Y todos tus hábitos comunes
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Todo el mundo dice que yo era pequeño
+                      Y ahora me volví un héroe (oh, no)
+                      Yo les digo que algo como el destino
+                      Nunca ha sido para mí (oh, no)
+                      La paz mundial (de ninguna manera)
+                      Una gran orden (de ninguna manera)
+                      Solo quiero cuidarte
+                      (Chico enamorado)
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Escucha, amor, estoy
+                      Volando alto en el cielo
+                      (Con las dos alas que me diste)
+                      Ahora está tan alto aquí
+                      Te quiero sintonizado con mis ojos
+                      Sí, me estás convirtiendo en un chico enamorado
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Oh, cielos, oh, cielos
+                      Me dejaste encantado tan rápido
+                      Quiero estar contigo todo el tiempo
+                      Oh, cielos, oh, cielos
+                      Me hiciste volar tan rápido
+                      Ahora logro entenderlo
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      El amor no es nada más fuerte (lo quiero)
+                      Que un chico, que un chico enamorado
+                      El amor no es nada más fuerte
+                      Que un chico, que un chico enamorado
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Voy a hablar claramente
+                      A veces me sentía un poco atrapado
+                      Cielos elevados, pasillos ampliados
+                      A veces yo rezaba para poder escaparme
+                      Pero tu dolor es mi dolor
+                      Cuando me di cuenta de eso, prometí a mí mismo
+                      Con las alas de Ícaro que me diste
+                      No en dirección al cielo, pero a ti
+                      Déjame volar
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Oh, cielos, oh, cielos
+                      He esperado toda mi vida
+                      Quiero estar contigo todo el tiempo
+                      Oh, cielos, oh, cielos
+                      Buscando algo bien
+                      Ahora logo entenderlo
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Quiero algo más fuerte
+                      Que un momento, que un momento, amor
+                      El amor no es nada más fuerte
+                      Que un chico, que un chico enamorado
+                    </p>
+                  </div>
+                </div>
+                <div class="dropdown mt-3">
+                  <label for="cantidad" class="">Cantidad</label>
+                  <input type="number" class="input_cantidad" (click)="total(6)" [(ngModel)]="cantidad">
+                  <label id="total_7">Total: $</label>
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" (click)="toggleDropdown(8)">
+                    Comprar disco
+                  </button>
+                  <ul class="dropdown-menu" [class.show]="isOpen[8]">
+                    <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()" id="7-1">Retiro en tienda</a>
+                    </li>
+                    <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()" id="7-2">Despacho RM</a></li>
+                    <li><a class="dropdown-item menu_nav" (click)="aumentar($event)" (click)="scrollToTop()" id="7-3">Despacho
+                        Regiones</a></li>
+                  </ul>
+                  <!-- Toast -->
+                  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+                      [class.show]="showToast">
+                      <div class="toast-header">
+                        <img src="../assets/images/jelly_logo.png" class="rounded me-2" alt="Logo_jelly">
+                        <strong class="me-auto">Jelly</strong>
+                        <small>11 mins ago</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"
+                          (click)="hideToaster()"></button>
+                      </div>
+                      <div class="toast-body">
+                        Se ha añadido el artículo {{nombre_producto}} por una suma de ${{total_compra}}. Recuerda que el costo de envío para este ártículo es de ${{costo_envio}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Fin sección video -->
+  </main>
+  <!-- Inicio footer -->
+  <footer class="text-center text-lg-start bg-white text-muted footer">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>Mantente conectado con nosotros por redes sociales:</span>
+      </div>
+      <!-- Left -->
+
+      <!-- Right -->
+      <div>
+        <a class="me-4 link-secondary"><i class="fab fa-facebook-f"></i></a>
+        <a class="me-4 link-secondary"><i class="fab fa-twitter"></i></a>
+        <a class="me-4 link-secondary"><i class="fab fa-google"></i></a>
+        <a class="me-4 link-secondary"><i class="fab fa-instagram"></i></a>
+        <a class="me-4 link-secondary"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/brayanquirozurrutia" target="_blank" class="me-4 link-secondary"><i
+            class="fab fa-github"></i></a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section>
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-2 mx-auto mb-4 text-center">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <a><img class="logo_jelly_footer img-fluid" src="../assets/images/jelly_logo.svg"
+                  alt="Logo jelly Footer"></a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Recursos
+            </h6>
+            <p>
+              <a class="text-decoration-none link_footer">Recomendaciones</a>
+            </p>
+            <p>
+              <a class="text-decoration-none link_footer">Comentarios</a>
+            </p>
+            <p>
+              <a routerLink="/ClientesFelices" class="text-decoration-none link_footer">Clientes felices</a>
+            </p>
+            <p>
+              <a class="text-decoration-none link_footer">Reseñas</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Colecciones
+            </h6>
+            <p>
+              <a class="text-decoration-none link_footer">BT21</a>
+            </p>
+            <p>
+              <a class="text-decoration-none link_footer">Photocards</a>
+            </p>
+            <p>
+              <a class="text-decoration-none link_footer">Álbum</a>
+            </p>
+            <p>
+              <a class="text-decoration-none link_footer">Merchandising</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Ayuda
+            </h6>
+            <p>
+              <a class="text-decoration-none link_footer">Contáctanos</a>
+            </p>
+            <p>
+              <a class="text-decoration-none link_footer">Preguntas frecuentes</a>
+            </p>
+            <p>
+              <a class="text-decoration-none link_footer">Crear/Acceder cuenta</a>
+            </p>
+            <p>
+              <a class="text-decoration-none link_footer">Garantía</a>
+            </p>
+            <p>
+              <a class="text-decoration-none link_footer">Políticas de privacidad</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Empresa
+            </h6>
+            <p>
+              <a class="text-decoration-none link_footer">Quiénes somos</a>
+            </p>
+            <p>
+              <a class="text-decoration-none link_footer">Prensa</a>
+            </p>
+            <p>
+              <a class="text-decoration-none link_footer">Punto de venta</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-2 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
+            <p>
+              <i class="fas fa-home me-3 text-secondary"></i>Ciudad, Calle #, País
+            </p>
+            <p>
+              <i class="fas fa-envelope me-3 text-secondary"></i>
+              nombre@correo.com
+            </p>
+            <p><i class="fas fa-phone me-3 text-secondary"></i> + 01 234 567 88</p>
+            <p><i class="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+      <p>Hecho con <i class="fa-solid fa-heart" style="color: #ff0000;"></i> por <a
+          href="https://github.com/brayanquirozurrutia" target="_blank">Brayan Nicolas Quiroz Urrutia</a></p>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Fin Footer -->
+</body>
+
+</html>

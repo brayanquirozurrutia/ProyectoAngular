@@ -1,0 +1,41 @@
+<div class="container-fluid pt-4 pb-4">
+    <div class="container-fluid">
+        <div class="container-fluid pe-4 ps-4">
+            <div class="row">
+                <div class="col-12 mt-3 mb-3">
+                    <h3 class="text-center">Suscríbete a nuestro newsletter y obtén un 10% de descuento en tu primera compra</h3>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control w-25" id="nombre" placeholder="Ingrese su nombre" required [(ngModel)]="nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido_1" class="form-label">Primer apellido</label>
+                        <input type="text" class="form-control w-25" id="apellido_1" placeholder="Ingrese sus primer apellido"
+                            required [(ngModel)]="apellido_1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido_2" class="form-label">Segundo apellido</label>
+                        <input type="text" class="form-control w-25" id="apellido_2" placeholder="Ingrese sus primer apellido"
+                            required [(ngModel)]="apellido_2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input type="email" class="form-control w-25" id="correo" placeholder="Ingrese su correo"
+                            required [(ngModel)]="correo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono (987654321)</label>
+                        <input type="number" class="form-control w-25" id="telefono" required [(ngModel)]="telefono">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="condiciones" required [(ngModel)]="condiciones">
+                        <label class="form-check-label" for="condiciones">Acepta condiciones</label>
+                    </div>
+                    <div class="container-fluid">
+                        <button class="btn btn-primary w-25" (click)="verDatos()">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

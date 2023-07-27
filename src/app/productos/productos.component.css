@@ -1,0 +1,14 @@
+/* Input listado productos */
+.input{
+    width: 100px;
+}
+
+/* Input nombre producto */
+.input_nombre{
+    width: 300px;
+}
+
+/* Efecto input */
+.input:hover{
+    box-shadow: 0 0 0.7rem rgb(149, 75, 187);
+}
